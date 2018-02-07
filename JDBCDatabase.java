@@ -9,31 +9,28 @@ import java.util.Properties;
 
 public class JDBCDatabase {
  
-  private Connection conn = null;
-  private static JDBCDatabase instance;
-  
-  private JDBCDatabase(){  }
-  
-  public static JDBCDatabase getInstance(){
-    if(instance == null) instance = new JDBCDatabase();
-    return instance;
-  }
-  
-  /***
-  TODO: Create javadoc 
-  ***/
-  public boolean establishConn(@NonNull String server, @NonNull String port, @NonNull String dbName, boolean useSSL, @NonNull String user, @NonNull String password)
-  throws SQLException{
-    
-    if(useSSL == null) useSSL = false;
-    
-    StringBuilder connString = new StringBuilder();
-    connString.append("jdbc:mysql://");
-    connString.append(server);
-    connString.append(":");
-    connString.append(port);
-    connString.append("/");
-    connString.append(dbName);
+	private Connection conn = null;
+	private static JDBCDatabase instance;
+	private JDBCDatabase(){  }
+	
+	public static JDBCDatabase getInstance(){
+		if(instance == null) instance = new JDBCDatabase();
+		return instance;
+	}
+	/***
+	TODO: Create javadoc 
+	***/
+	public boolean establishConn(@NonNull String server, @NonNull String port, @NonNull String dbName, boolean useSSL, @NonNull String user, @NonNull String password) 
+		throws SQLException{
+		
+		if(useSSL == null) useSSL = false;
+		StringBuilder connString = new StringBuilder();
+		connString.append("jdbc:mysql://");
+		connString.append(server);
+		connString.append(":");
+		connString.append(port);
+		connString.append("/");
+		connString.append(dbName);
 		if(useSSL){
 			connString.append("?verifyServerCertificate=false");
 			connString.append("&useSSL=true");
@@ -42,20 +39,19 @@ public class JDBCDatabase {
 		else{
 			connString.append("?useSSL=false");
 		}
-    
-    Properties connectionProps = new Properties();
-	  connectionProps.put("user", user);
-	  connectionProps.put("password", password);
-    
-    try {
+		
+		Properties connectionProps = new Properties();
+		connectionProps.put("user", user);
+		connectionProps.put("password", password);
+		try {
 			conn = DriverManager.getConnection(connString.toString(), connectionProps);
 		} catch (SQLException e) {
 			throw new SQLException(e.getMessage());
 			return false;
 		}
-    return conn != null; 
-  }
-  
+		return conn != null; 
+	}
+	
 	/***
   TODO: Create javadoc 
 	@brief: Method to insert, update or delete data from db
