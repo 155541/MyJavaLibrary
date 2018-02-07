@@ -39,7 +39,7 @@ public class JDBCDatabase {
     
     Properties connectionProps = new Properties();
 	  connectionProps.put("user", user);
-    connectionProps.put("password", password);
+	  connectionProps.put("password", password);
     
     try {
 			conn = DriverManager.getConnection(connString.toString(), connectionProps);
