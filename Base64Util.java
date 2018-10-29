@@ -1,3 +1,7 @@
+package com.revolhope.deepdev.portablesupportlibrary.util;
+
+//import java.util.Base64; ??
+
 
 /**
  * Static class that provides methods to convert and invert Base64 Strings
