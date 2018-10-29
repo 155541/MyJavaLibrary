@@ -27,7 +27,7 @@ public class Cryptography
     
     public SymmetricCipher buildSymmetricCipher(Transformation transformation, int mode, Key key)
     {
-        SymmetricCipher symCipher = new SymmetricCipher(transformation, mode, key);
+        SymmetricCipher symCipher = new SymmetricCipher(transformation, mode, key); // TODO
         return symCipher;
     }
     
