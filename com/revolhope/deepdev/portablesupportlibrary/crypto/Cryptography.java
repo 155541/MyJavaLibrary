@@ -19,9 +19,9 @@ public class Cryptography
         return INSTANCE;
     }
     
-    public SymmetricCipher buildSymmetricCipher(String algorithm)
+    public SymmetricCipher buildSymmetricCipher(transformation, int mode, Key key)
     {
-        SymmetricCipher symCipher = new SymmetricCipher();
+        SymmetricCipher symCipher = new SymmetricCipher(algorithm, mode, key);
         return symCipher;
     }
     
@@ -41,26 +41,17 @@ public class Cryptography
         /**
          * 
          */
-        private SymmetricCipher(String algorithm) throws NoSuchAlgorithmException, NoSuchPaddingException
+        private SymmetricCipher(@NonNull Transformation transformation) throws NoSuchAlgorithmException, NoSuchPaddingException
         {
-            c = Cipher.getInstance(algorithm);
+            c = Cipher.getInstance(transformation.toString());
         }
         
         /**
          * 
          */
-        private SymmetricCipher(String algorithm, String provider) throws NoSuchAlgorithmException, NoSuchPaddingException, NoSuchProviderException
+        private SymmetricCipher(@NonNull Transformation transformation,@NonNull String provider) throws NoSuchAlgorithmException, NoSuchPaddingException, NoSuchProviderException
         {
-            c = Cipher.getInstance(algorithm, provider);
-        }
-        
-        /**
-         *
-         */
-        private void build(String algorithm)
-        {
-            
-             c.init(Cipher.ENCRYPT_MODE, key);
+            c = Cipher.getInstance(transformation.toString(), provider);
         }
     }
     
