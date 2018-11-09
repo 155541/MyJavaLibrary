@@ -1,7 +1,7 @@
 /**
      *
      */
-    public class SymmetricCrypto
+    public class SymmetricCryptography
     {
         private Cipher c;
         private byte[] IV;
