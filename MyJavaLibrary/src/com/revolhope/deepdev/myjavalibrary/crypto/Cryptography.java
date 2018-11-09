@@ -37,11 +37,8 @@ public class Cryptography
         return symCipher;
     }
     
-    /**
-     *
-     */
-    public class AsymmetricCipher
+    public void generateSymmetricKey()
     {
-        private AsymmetricCipher(){}
+        
     }
 }
