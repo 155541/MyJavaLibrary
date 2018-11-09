@@ -62,7 +62,16 @@
             return this.key;
         }
         
-        public void generateKey(String password){};
-        
-        
+        /**
+         * Method to generate and set the secret key.
+         * Param keySize Key bit size
+         * Param algorithm Algorithm enum, i.e: AES, DES, etc.
+         * Param password String password
+         * return SecretKet generated
+         * throws 
+         */
+        public void generateKey(int keySize, Algorithm algorithm, String password)
+        {
+            
+        }
     }
