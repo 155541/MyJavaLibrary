@@ -1,86 +1,49 @@
 /**
-     *
-     */
-    public class SymmetricCryptography
-    {
-        private KeyGenerator keyGenerator;
+ * Interface to be implemented for all Symmetric cryptography classes
+ */
+public interface SymmetricCryptography<T extends Serializable>
+{
+    public byte[] encrypt(T object);
         
-        private Cipher c;
-        private byte[] IV;
+    public T decrypt(byte[] encryptedObject);
+    
+    public void setIV(byte[]);
         
-        private SecretKey key;
-        private byte[] keyBytes;
-        private String pwd;
+    public void setIV(String ivStringBase64);
+    
+    public void setKey(byte[]);
         
+    public void setKey(String keyStringBase64);
         
-        SymmetricCrypto()
-        {
-        }
-        
-        /**
-         * 
-         */
-        private SymmetricCrypto(Transformation transformation) throws NoSuchAlgorithmException, NoSuchPaddingException
-        {
-            c = Cipher.getInstance(transformation.toString());
-        }
-        
-        /**
-         * 
-         */
-        private SymmetricCipher(Transformation transformation, String provider) throws NoSuchAlgorithmException, NoSuchPaddingException, NoSuchProviderException
-        {
-            c = Cipher.getInstance(transformation.toString(), provider);
-        }
-        
-        public void setIV();
-        
-        public void setKey();
-        
-        public void setPassword();
-        
-        public void encrypt(){}
-        
-        public void decrypt(){}
-        
-        public void getIV();
-        
-        public void getKey();
-        
-        public String generatePassword()
-        {
-            KeyGenerator keyGen = KeyGenerator.getInstance("AES");
-            keyGen.init(256);
-            password = Base64.getEncoder().encodeToString(keyGen.generateKey().getEncoded());
-        }
-        
-        
-        
-        /**
-         * Method to generate and set the secret key.
-         * Param keySize Key bit size
-         * Param algorithm Algorithm, i.e: AES, DES, etc.
-         * return SecretKet generated
-         * throws 
-         */
-        public SecretKey generateKey(int keySize, Algorithm algorithm)
-        {
-            keyGenerator = KeyGenerator.getInstance(algorithm.toString());
-            keyGenerator.init(keySize, new SecureRandom());
-            this.key = keyGenerator.generateKey();
-            return this.key;
-        }
-        
-        /**
-         * Method to generate and set the secret key.
-         * Param keySize Key bit size
-         * Param algorithm Algorithm enum, i.e: AES, DES, etc.
-         * Param password String password
-         * return SecretKet generated
-         * throws 
-         */
-        public void generateKey(int keySize, Algorithm algorithm, String password)
-        {
-            
-        }
-    }
+    public void isPasswordBased(boolean isPasswordBased);
+    
+    public void setPassword(byte[] pwdBytes);
+    
+    public void setPassword(String pwd);
+    
+    public void setKeySize(KeySizeEnum eKeySize);
+    
+    public void setModeAndPadding(Mode mode, Padding padding);
+    
+    public byte[] getIV();
+    
+    public String getIVBase64();
+    
+    public SecretKey getSecretKey();
+    
+    public String getSecretKeyBase64();
+     
+    public int getKeySize();
+    
+    public KeySizeEnum getKeySizeEnum();
+    
+    public String getPassword();
+    
+    public byte[] getPasswordBytes();
+    
+    public Mode getMode();
+    
+    public Padding getPadding();
+    
+    public void initialize();
+}
