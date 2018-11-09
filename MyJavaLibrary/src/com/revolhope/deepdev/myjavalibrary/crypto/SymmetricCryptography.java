@@ -47,6 +47,15 @@
         
         public void getKey();
         
+        public String generatePassword()
+        {
+            KeyGenerator keyGen = KeyGenerator.getInstance("AES");
+            keyGen.init(256);
+            password = Base64.getEncoder().encodeToString(keyGen.generateKey().getEncoded());
+        }
+        
+        
+        
         /**
          * Method to generate and set the secret key.
          * Param keySize Key bit size
