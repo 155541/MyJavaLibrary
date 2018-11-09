@@ -3,16 +3,19 @@
      */
     public class SymmetricCryptography
     {
+        private KeyGenerator keyGenerator;
+        
         private Cipher c;
         private byte[] IV;
-        private byte[] key;
+        
+        private SecretKey key;
+        private byte[] keyBytes;
         private String pwd;
         
         
         SymmetricCrypto()
         {
         }
-        
         
         /**
          * 
@@ -43,4 +46,23 @@
         public void getIV();
         
         public void getKey();
+        
+        /**
+         * Method to generate and set the secret key.
+         * Param keySize Key bit size
+         * Param algorithm Algorithm, i.e: AES, DES, etc.
+         * return SecretKet generated
+         * throws 
+         */
+        public SecretKey generateKey(int keySize, Algorithm algorithm)
+        {
+            keyGenerator = KeyGenerator.getInstance(algorithm.toString());
+            keyGenerator.init(keySize, new SecureRandom());
+            this.key = keyGenerator.generateKey();
+            return this.key;
+        }
+        
+        public void generateKey(String password){};
+        
+        
     }
