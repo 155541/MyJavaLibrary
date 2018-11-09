@@ -40,30 +40,6 @@ public class Cryptography
     /**
      *
      */
-    public class SymmetricCipher
-    {
-        private Cipher c;
-        
-        /**
-         * 
-         */
-        private SymmetricCipher(Transformation transformation) throws NoSuchAlgorithmException, NoSuchPaddingException
-        {
-            c = Cipher.getInstance(transformation.toString());
-        }
-        
-        /**
-         * 
-         */
-        private SymmetricCipher(Transformation transformation, String provider) throws NoSuchAlgorithmException, NoSuchPaddingException, NoSuchProviderException
-        {
-            c = Cipher.getInstance(transformation.toString(), provider);
-        }
-    }
-    
-    /**
-     *
-     */
     public class AsymmetricCipher
     {
         private AsymmetricCipher(){}
