@@ -1,7 +1,6 @@
 package com.revolhope.deepdev.myjavalibrary.crypto;
 
-
-public enum Mode
+public enum Padding 
 {
-	
+
 }

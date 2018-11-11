@@ -1,7 +1,5 @@
 package com.revolhope.deepdev.myjavalibrary.crypto;
 
+public enum KeySizeEnum {
 
-public enum Mode
-{
-	
 }

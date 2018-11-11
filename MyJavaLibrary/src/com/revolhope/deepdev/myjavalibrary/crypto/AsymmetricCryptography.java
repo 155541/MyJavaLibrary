@@ -1,7 +1,10 @@
+package com.revolhope.deepdev.myjavalibrary.crypto;
+
+
 /**
-     *
-     */
-    public class AsymmetricCipher
-    {
-        private AsymmetricCipher(){}
-    }
+ *
+ */
+public class AsymmetricCryptography
+{
+	private AsymmetricCryptography(){}
+}

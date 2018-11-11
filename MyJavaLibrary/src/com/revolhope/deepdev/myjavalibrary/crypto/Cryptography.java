@@ -25,20 +25,15 @@ public class Cryptography
         return INSTANCE;
     }
     
-    public SymmetricCipher buildSymmetricCipher(Transformation transformation, int mode, Key key)
+    public SymmetricCryptography buildSymmetricCipher(Transformation transformation, int mode, Key key)
     {
-        SymmetricCipher symCipher = new SymmetricCipher(transformation, mode, key); // TODO
+    	SymmetricCryptography symCipher = new SymmetricCryptography(transformation, mode, key); // TODO
         return symCipher;
     }
     
-    public SymmetricCipher buildSymmetricCipher(String algorithm, String provider)
+    public SymmetricCryptography buildSymmetricCipher(String algorithm, String provider)
     {
-        SymmetricCipher symCipher = new SymmetricCipher(algorithm, provider);
+    	SymmetricCryptography symCipher = new SymmetricCryptography(algorithm, provider);
         return symCipher;
-    }
-    
-    public void generateSymmetricKey()
-    {
-        
     }
 }

@@ -1,3 +1,9 @@
+package com.revolhope.deepdev.myjavalibrary.crypto;
+
+import java.io.Serializable;
+
+import javax.crypto.SecretKey;
+
 /**
  * Interface to be implemented for all Symmetric cryptography classes
  */
@@ -7,11 +13,11 @@ public interface SymmetricCryptography<T extends Serializable>
         
     public T decrypt(byte[] encryptedObject);
     
-    public void setIV(byte[]);
+    public void setIV(byte[] iv);
         
     public void setIV(String ivStringBase64);
     
-    public void setKey(byte[]);
+    public void setKey(byte[] key);
         
     public void setKey(String keyStringBase64);
         
