@@ -30,14 +30,11 @@ import javafx.util.Pair;
  */
 public class AlertUtil
 {
-    /**
-     * 
-     */
     private static Alert alert;
     
     /**
-     * Method to show an alert. AlertType param must be set, other params can be null.
-     * @param alertType AlertType enum of the alert. Can not be null.
+     * Method to show an alert. AlertType parameter must be set, other parameters can be null.
+     * @param alertType AlertType enumeration of the alert. Can not be null.
      * @param title String representing title of the alert.
      * @param header String containing the header of the alert.
      * @param content String containing the content of the alert.
@@ -72,7 +69,7 @@ public class AlertUtil
      *  @param title String containing the title of the alert. If it is null, it's value will be "Confirmation"
      *  @param header String containing the header of the alert.
      *  @param content String containing the content of the alert.
-     *  @param textButtonTrue String containing the text of the button that on click will return true. If it is null it will be "Ok"
+     *  @param textButtonTrue String containing the text of the button that on click will return true. If it is null it will be "OK"
      *  @param textButtonFalse String containing the text of the button that on click will return false. If it is null it will be "Cancel"
      *  @return True if button clicked was the buttonTrue given, false otherwise.
      */
@@ -97,7 +94,7 @@ public class AlertUtil
      *  @param header String containing the header of the alert.
      *  @param content String containing the content of the alert.
      *  @param textButtons String... containing the text of the buttons representing all choices. The button cancel is by default, do not include!
-     *  @return Index of button clicked. May return -1 if button click have been "Cancel" or -404 in estrange case, see method source.
+     *  @return Index of button clicked. May return -1 if button click have been "Cancel" or -404 in strange case, see method source.
      */
     public static int showMultiQuestion(AlertType alertType, String title, String header, String content, String... textButtons)
     {
@@ -135,7 +132,7 @@ public class AlertUtil
     /**
      *  Method to launch an Exception alert.
      *  @param title String containing the title of the alert, if it's null, it will be "Error - Exception thrown".
-     *  @param header String containing the header of the alert, if it's null, it will be the type of the param exc.
+     *  @param header String containing the header of the alert, if it's null, it will be the type of the parameter exception.
      *  @param content String containing the content of the alert, if it's null, it will be the result of method getMessage() from exception given.
      *  @param exc Exception to be shown in the alert. It can not be null.
      */
@@ -177,8 +174,8 @@ public class AlertUtil
      *  @param title String containing the title of the dialog. No default value if given is null.
      *  @param header String containing the header of the dialog. No default value if given is null.
      *  @param content String containing the content of the dialog. No default value if given is null.
-     *  @param textBoxInitialValue String containing the inital value of the textbox. If it is null it will be empty.
-     *  @return String containing the input set on the textbox. If result is not present, it will return an empty String, do not return Null value in anyway.
+     *  @param textBoxInitialValue String containing the initial value of the text box. If it is null it will be empty.
+     *  @return String containing the input set on the text box. If result is not present, it will return an empty String, do not return Null value in anyway.
      */
     public static String showDialogTextInput(String title, String header, String content, String textBoxInitialValue)
     {
