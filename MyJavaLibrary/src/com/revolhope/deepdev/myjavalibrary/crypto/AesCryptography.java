@@ -11,12 +11,16 @@ public class AesCryptography<T extends Serializable> implements SymmetricCryptog
 {
   
 	private SecretKey key;
+	private byte[] IV;
+	
 	private int keySize;
+	private KeySizeEnum keySizeEnum;
 	
 	private Mode mode;
 	private Padding padding;
 	
-	private byte[] pwd;
+	private String pwd;
+	private byte[] pwdBytes;
 	
 	private boolean isPasswordBased = false;
 	
@@ -82,91 +86,83 @@ public class AesCryptography<T extends Serializable> implements SymmetricCryptog
 	@Override
 	public void setPassword(String pwd) 
 	{
-		this.pwd = Base64Util.getBytes(pwd, "UTF-8");
+		this.pwd = pwd;
+		this.pwdBytes = Base64Util.getBytes(pwd, "UTF-8");
 		this.isPasswordBased = true;
 	}
 	
 	@Override
 	public void setKeySize(KeySizeEnum eKeySize) 
 	{
-		this.keySize = eKeySize;
+		this.keySizeEnum = eKeySize;
+		this.keySize = eKeySize.getValue();
 	}
 	
 	@Override
 	public void setModeAndPadding(Mode mode, Padding padding) 
 	{
-		// TODO Auto-generated method stub
-		
+		this.mode = mode.getValue();
+		this.padding = padding.getValue();
 	}
 	
 	@Override
 	public byte[] getIV() 
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return this.IV;
 	}
 	
 	@Override
 	public String getIVBase64() 
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return Base64Util.to64(this.IV);
 	}
 	
 	@Override
 	public SecretKey getSecretKey() 
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return this.key;
 	}
 	
 	@Override
 	public String getSecretKeyBase64() 
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return Base64Util.to64(this.key.getEncoded());
 	}
 	
 	@Override
 	public int getKeySize() 
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		return this.keySize;
 	}
 	
 	@Override
 	public KeySizeEnum getKeySizeEnum() 
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return this.keySizeEnum;
 	}
 	
 	@Override
 	public String getPassword() 
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return this.pwd;
 	}
 	
 	@Override
 	public byte[] getPasswordBytes() 
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return this.pwdBytes;
 	}
 	
 	@Override
 	public Mode getMode() 
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return this.mode;
 	}
 	
 	@Override
 	public Padding getPadding() 
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return this.padding;
 	}
 	
 	@Override
