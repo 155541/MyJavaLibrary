@@ -3,7 +3,7 @@ package com.revolhope.deepdev.myjavalibrary.crypto;
 public enum Padding 
 {
     AES_NoPadding("NoPadding"),
-    AES_PKCS5Padding("PKCS7Padding"),
+    AES_PKCS5Padding("PKCS5Padding"),
     AES_PKCS7Padding("PKCS7Padding");
     // TODO: Implement more?
     // TODO: RSA paddings
