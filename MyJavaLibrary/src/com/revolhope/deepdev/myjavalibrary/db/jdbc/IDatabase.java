@@ -1,6 +1,6 @@
 package com.revolhope.deepdev.myjavalibrary.db.jdbc;
 
-public interface IDatabase
+public interface IDatabase<ID, T extends Serializable>
 {
     T findById(ID id);
     boolean exists(T entity);
