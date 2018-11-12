@@ -9,11 +9,14 @@ import com.revolhope.deepdev.myjavalibrary.util.Base64Util;
 
 public class AesCryptography<T extends Serializable> implements SymmetricCryptography<T>
 {
-  
+	
+	private Cipher cipher;
+	private KeyGenerator keyGen;
+	private SecretKeySpec spec;
 	private SecretKey key;
 	private byte[] IV;
 	
-	private int keySize;
+	private int keySize = -1;
 	private KeySizeEnum keySizeEnum;
 	
 	private Mode mode;
@@ -23,7 +26,7 @@ public class AesCryptography<T extends Serializable> implements SymmetricCryptog
 	private byte[] pwdBytes;
 	
 	private boolean isPasswordBased = false;
-	
+	private boolean isInitialized = false;
 	
 	private AesCryptography()
 	{}
@@ -159,16 +162,47 @@ public class AesCryptography<T extends Serializable> implements SymmetricCryptog
 		return this.mode;
 	}
 	
+	/**
+	 * TODO
+	 */
 	@Override
 	public Padding getPadding() 
 	{
 		return this.padding;
 	}
 	
+	/**
+	 * TODO
+	 */
 	@Override
-	public void initialize() 
+	public void initialize() throws Exception
 	{
-		// TODO Auto-generated method stub
+		if (mode == null || padding == null || key == null)
+		{
+			throw new Exception("Not properly initialized, check documentation");
+		}
+		String transformation = "AES/" + mode.getValue() + "/" + padding.getValue();
+		cipher = Cipher.getInstance(transformation);
+		isInitialized = true;
+	}
+	
+	/**
+	 * TODO
+	 */
+	public void generateKey()
+	{
+		if (keySize == -1) throw new Exception("Key size not set, check documentation");
+		keyGen = KeyGenerator.getInstance("AES");
+		keyGen.init(keySize);
+		key = keyGen.generateKey();
+	}
+	
+	/**
+	 * TODO
+	 */
+	public void generateKeyPwdBased()
+	{
+		if (keySize == -1 || pwd == null) throw new Exception("Key size or password not set, check documentation");
 		
 	}
 }
