@@ -21,7 +21,7 @@ public interface SymmetricCryptography<T extends Serializable>
         
     public void setKey(String keyStringBase64);
         
-    public void isPasswordBased(boolean isPasswordBased);
+    public boolean isPasswordBased();
     
     public void setPassword(byte[] pwdBytes);
     

@@ -1,12 +1,24 @@
 package com.revolhope.deepdev.myjavalibrary.crypto;
 
 import java.io.Serializable;
+import java.nio.charset.Charset;
 
 import javax.crypto.SecretKey;
+
+import com.revolhope.deepdev.myjavalibrary.util.Base64Util;
 
 public class AesCryptography<T extends Serializable> implements SymmetricCryptography<T>
 {
   
+	private SecretKey key;
+	private int keySize;
+	
+	private Mode mode;
+	private Padding padding;
+	
+	private byte[] pwd;
+	
+	private boolean isPasswordBased = false;
 	
 	
 	private AesCryptography()
@@ -55,31 +67,29 @@ public class AesCryptography<T extends Serializable> implements SymmetricCryptog
 	}
 	
 	@Override
-	public void isPasswordBased(boolean isPasswordBased) 
+	public boolean isPasswordBased() 
 	{
-		// TODO Auto-generated method stub
-		
+		return this.isPasswordBased;
 	}
 	
 	@Override
 	public void setPassword(byte[] pwdBytes) 
 	{
-		// TODO Auto-generated method stub
-		
+		this.pwd = pwdBytes;
+		this.isPasswordBased = true;
 	}
 	
 	@Override
 	public void setPassword(String pwd) 
 	{
-		// TODO Auto-generated method stub
-		
+		this.pwd = Base64Util.getBytes(pwd, "UTF-8");
+		this.isPasswordBased = true;
 	}
 	
 	@Override
 	public void setKeySize(KeySizeEnum eKeySize) 
 	{
-		// TODO Auto-generated method stub
-		
+		this.keySize = eKeySize;
 	}
 	
 	@Override
