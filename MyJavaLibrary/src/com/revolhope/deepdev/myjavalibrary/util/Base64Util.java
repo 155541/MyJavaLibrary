@@ -44,6 +44,34 @@ public class Base64Util
 	}
 
 	/**
+	 * Method to encode byte[] to base64 String
+	 * @params bytes Byte[] to encode
+	 * @return String encoded in base64
+	 */
+	public static String to64String(byte[] bytes) 
+	{
+		if (encoder == null)
+		{
+			encoder = Base64.getEncoder();
+		}
+		return encoder.encodeToString(bytes);
+	}
+	
+	/**
+	 * Method to encode byte[] to base64 byte[]
+	 * @params bytes Byte[] to encode
+	 * @return Byte[] encoded in base64
+	 */
+	public static byte[] to64(byte[] bytes) 
+	{
+		if (encoder == null)
+		{
+			encoder = Base64.getEncoder();
+		}
+		return encoder.encode(bytes);
+	}
+	
+	/**
 	 * Method to convert back from base64 String to String encoded with Charset provided,
 	 * if this is null or wrong, Charset used will be default
 	 * @params str64 String object to convert back from base64
