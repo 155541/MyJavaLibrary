@@ -1,4 +1,4 @@
-package com.revolhope.deepdev.myjavalibrary.database;
+package com.revolhope.deepdev.myjavalibrary.db.jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

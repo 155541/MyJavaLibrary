@@ -1,4 +1,29 @@
-package com.revolhope.deepdev.myjavalibrary.ui.fxml;
+package com.revolhope.deepdev.myjavalibrary.ui.javafx;
+
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import javafx.application.Platform;
+import javafx.geometry.Insets;
+import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonBar.ButtonData;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.ChoiceDialog;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Priority;
+import javafx.util.Pair;
 
 /**
  * Class to provide methods for launch alerts and dialogs
@@ -124,7 +149,7 @@ public class AlertUtil
         
         StringWriter sw = new StringWriter();
         PrintWriter pw = new PrintWriter(sw);
-        ex.printStackTrace(pw);
+        exc.printStackTrace(pw);
         String exceptionText = sw.toString();
 
         Label label = new Label("The exception stacktrace was:");
@@ -167,19 +192,19 @@ public class AlertUtil
     }
     
     /**
-     *  Method to launch a basic choicebox dialog.
+     *  Method to launch a basic choice box dialog.
      *  @param title String containing the title of the dialog. If it is null value is "Pick an option".
      *  @param header String containing the header of the dialog. No default value if given is null.
      *  @param content String containing the content of the dialog. No default value if given is null.
-     *  @param choiceboxInitialValue String containing the inital value of the choicebox. If it is null it will the firts element of the choices list.
+     *  @param choiceboxInitialValue String containing the initial value of the choice box. If it is null it will the first element of the choices list.
      *  @param choices List<String> containing all the possible choices of the dialog.
      *  @param needBlankValue Boolean, if it is true, a blank value will be added to choices.
-     *  @param blankValue String Optional value, only needed if needBlankValue is true. Text of the blank value, in cas needBlankValue is true and blankValue is no set, by default it will be an empty String
-     *  @return String containing the choicebox value. If result is not present, it will return an empty String, do not return Null value in anyway.
+     *  @param blankValue String Optional value, only needed if needBlankValue is true. Text of the blank value, in case needBlankValue is true and blankValue is no set, by default it will be an empty String
+     *  @return String containing the choice box value. If result is not present, it will return an empty String, do not return Null value in anyway.
      */
     public static String showDialogChoiceBox(String title, String header, String content, String choiceboxInitialValue, List<String> choices, boolean needBlankValue, String blankValue)
     {
-        ChoiceDialog<String> dialog
+        ChoiceDialog<String> dialog;
         if (needBlankValue)
         {
             ArrayList<String> list = new ArrayList<>();
@@ -210,11 +235,11 @@ public class AlertUtil
      *  Method to launch a basic login dialog. It does not make any validation, it's just an input dialog.
      *  @param title String containing the title of the dialog. If it is null the default value will be "Login"
      *  @param header String containing the header of the dialog. If it is null there is no default value.
-     *  @param iconUrl String url of the resource. It may be null.
-     *  @param userLabel String containing the label for User, i.e.: user: / username: / email: / etc.
+     *  @param iconUrl String URL of the resource. It may be null.
+     *  @param userLabel String containing the label for User, i.e.: user: / user name: / email: / etc.
      *  @param pwdLabel String containing the label for Password, i.e.: password: / email: / token: / etc.
-     *  @param userPlaceholder String containing a placeholder for the User textbox. If it is null, there won't be any value.
-     *  @param pwdPlaceholder String containing a placeholder for the Password textbox. If it is null, there won't be any value.
+     *  @param userPlaceholder String containing a placeholder for the User text box. If it is null, there won't be any value.
+     *  @param pwdPlaceholder String containing a placeholder for the Password text box. If it is null, there won't be any value.
      *  @return Pair<String, String> if value is present: <user, password>. Null value will be returned otherwise.
      */
     public static Pair<String, String> showBasicLogin(String title, String header, String iconUrl, String userLabel, String pwdLabel, 
@@ -253,14 +278,14 @@ public class AlertUtil
         grid.add(new Label(pwdLabel == null ? "Password:" : pwdLabel), 0, 1);
         grid.add(password, 1, 1);
 
-        // Enable/Disable login button depending on whether a username was entered.
+        // Enable/Disable login button depending on whether a user name was entered.
         Node loginButton = dialog.getDialogPane().lookupButton(loginButtonType);
         loginButton.setDisable(true);
 
         dialog.getDialogPane().setContent(grid);
         Platform.runLater(() -> username.requestFocus());
 
-        // Convert the result to a username-password-pair when the login button is clicked.
+        // Convert the result to a user name-password-pair when the login button is clicked.
         dialog.setResultConverter(dialogButton -> 
         {
             if (dialogButton == loginButtonType)
@@ -271,8 +296,14 @@ public class AlertUtil
         });
 
         Optional<Pair<String, String>> result = dialog.showAndWait();
-
-        result.ifPresent(resultPair -> { return resultPair; });
-        return null;
+        
+        if (result.isPresent())
+        {
+        	return result.get();
+        }
+        else
+        {
+        	return null;
+        }
     }
 }
