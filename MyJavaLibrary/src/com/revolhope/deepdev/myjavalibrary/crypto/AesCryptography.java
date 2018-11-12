@@ -114,7 +114,7 @@ public class AesCryptography<T extends Serializable> implements SymmetricCryptog
 	@Override
 	public String getIVBase64() 
 	{
-		return Base64Util.to64(this.IV);
+		return Base64Util.to64String(this.IV);
 	}
 	
 	@Override
@@ -126,7 +126,7 @@ public class AesCryptography<T extends Serializable> implements SymmetricCryptog
 	@Override
 	public String getSecretKeyBase64() 
 	{
-		return Base64Util.to64(this.key.getEncoded());
+		return Base64Util.to64String(this.key.getEncoded());
 	}
 	
 	@Override
