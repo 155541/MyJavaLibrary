@@ -27,6 +27,7 @@ import javafx.util.Pair;
 
 /**
  * Class to provide methods for launch alerts and dialogs
+ * @author deepdev
  */
 public class AlertUtil
 {

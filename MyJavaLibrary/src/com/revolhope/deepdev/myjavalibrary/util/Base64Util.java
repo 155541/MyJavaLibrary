@@ -20,8 +20,8 @@ public class Base64Util
 
 	/**
 	 * Method to encode String given in base64
-	 * @params str String object to encode to base64
-	 * @params charset String representing the string's charset of the object given, if it's null, it will be default
+	 * @param str String object to encode to base64
+	 * @param charset String representing the string's charset of the object given, if it's null, it will be default
 	 * @return String encoded in base64
 	 */
 	public static String to64(String str, String charset) throws IllegalCharsetNameException, UnsupportedCharsetException
@@ -45,7 +45,7 @@ public class Base64Util
 
 	/**
 	 * Method to encode byte[] to base64 String
-	 * @params bytes Byte[] to encode
+	 * @param bytes Byte[] to encode
 	 * @return String encoded in base64
 	 */
 	public static String to64String(byte[] bytes) 
@@ -59,7 +59,7 @@ public class Base64Util
 	
 	/**
 	 * Method to encode byte[] to base64 byte[]
-	 * @params bytes Byte[] to encode
+	 * @param bytes Byte[] to encode
 	 * @return Byte[] encoded in base64
 	 */
 	public static byte[] to64(byte[] bytes) 
@@ -74,8 +74,8 @@ public class Base64Util
 	/**
 	 * Method to convert back from base64 String to String encoded with Charset provided,
 	 * if this is null or wrong, Charset used will be default
-	 * @params str64 String object to convert back from base64
-	 * @params charset String representing the charset to encode the String object encoded with base64
+	 * @param str64 String object to convert back from base64
+	 * @param charset String representing the charset to encode the String object encoded with base64
 	 * @return String decoded from base64 and encoded with Charset provided
 	 */
 	public static String from64(String str64, String charset) throws UnsupportedCharsetException

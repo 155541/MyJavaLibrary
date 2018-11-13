@@ -51,5 +51,5 @@ public interface SymmetricCryptography<T extends Serializable>
     
     public Padding getPadding();
     
-    public void initialize();
+    public void initialize() throws Exception;
 }
